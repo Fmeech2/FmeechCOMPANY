@@ -4,14 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".registration"
     android:orientation="vertical"
-    android:gravity="center">
+
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/strelka_back"
+            android:onClick="back3"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
     <ImageView
         android:layout_width="132dp"
         android:layout_height="133dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/avotiz" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +40,7 @@
         android:gravity="center"
         >
 
-        <TextView
-            android:layout_width="51dp"
-            android:layout_height="wrap_content"
-            android:textSize="7pt"
-            android:textStyle="bold"
-            android:text="Логин"
-            android:layout_marginRight="4dp"/>
+
 
         <EditText
             android:id="@+id/login"
@@ -34,7 +48,7 @@
             android:layout_height="wrap_content"
             android:hint="введите логин"
             android:textAlignment="center"/>
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,19 +58,30 @@
         android:layout_marginTop="5dp"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Пароль"
-            android:textSize="7pt"
-            android:textStyle="bold"
-            android:layout_marginRight="4dp"/>
+
 
         <EditText
             android:id="@+id/password"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:hint="введите пароль"
+            android:textAlignment="center" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        >
+
+
+
+        <EditText
+            android:id="@+id/true_password"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:hint="повторите пароль"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -66,25 +91,18 @@
         android:orientation="horizontal"
         android:layout_marginTop="25dp">
 
-        <Button
-            android:id="@+id/sign_in"
-            android:layout_width="142dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="15dp"
-            android:background="@color/button"
-            android:onClick="da"
-            android:text="Вход"
-            android:textColor="@color/white" />
+
 
         <Button
             android:id="@+id/registration"
-            android:layout_width="141dp"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:background="@color/button"
-            android:text="Регестрация"
+            android:text="Зарегестроваться"
             android:textColor="@color/white"
-            android:onClick="net"
-          />
+            android:onClick="zar"
+            />
 
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

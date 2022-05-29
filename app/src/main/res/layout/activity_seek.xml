@@ -20,7 +20,6 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/strelka_back" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,14 +39,12 @@
         android:orientation="horizontal"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
-
         <EditText
             android:id="@+id/search_text"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:hint="Введите имя пользователя"
             android:textAlignment="center" />
-
         <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
@@ -55,7 +52,8 @@
             android:layout_marginRight="5dp"
             android:background="@color/button"
             android:text="Найти"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:onClick="serch"/>
     </LinearLayout>
 
     <LinearLayout
@@ -63,43 +61,44 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/Lost">
 
 
-                <LinearLayout
+
+
+
+
+
+
+        <!-- <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal">
-
-                    <ImageView
+              <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:src="@drawable/avotiz" />
-
-                    <LinearLayout
+             <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:orientation="vertical">
-
-                        <TextView
+               <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="ФИО"
                             android:textColor="@color/black"
                             android:textSize="8pt" />
-
-                        <Button
+                 <Button
                             android:layout_width="200dp"
                             android:layout_height="35dp"
                             android:layout_marginTop="5dp"
@@ -108,385 +107,17 @@
                             android:textColor="@color/white"
                             android:onClick="profol"/>
                     </LinearLayout>
-                </LinearLayout>
+                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
 
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/avotiz" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ФИО"
-                            android:textColor="@color/black"
-                            android:textSize="8pt" />
-
-                        <Button
-                            android:layout_width="200dp"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-                </LinearLayout>
 
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 </LinearLayout>

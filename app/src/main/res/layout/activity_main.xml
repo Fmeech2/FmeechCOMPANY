@@ -26,6 +26,7 @@
             android:textSize="7pt"
             android:textStyle="bold"
             android:text="Логин"
+            android:id="@+id/ll"
             android:layout_marginRight="4dp"/>
 
         <EditText
@@ -57,6 +58,7 @@
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:hint="введите пароль"
+            android:inputType="textPassword"
             android:textAlignment="center" />
     </LinearLayout>
 

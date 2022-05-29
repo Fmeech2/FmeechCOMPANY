@@ -64,6 +64,7 @@
             android:id="@+id/password"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="введите пароль"
             android:textAlignment="center" />
     </LinearLayout>
@@ -81,6 +82,7 @@
             android:id="@+id/true_password"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="повторите пароль"
             android:textAlignment="center" />
     </LinearLayout>

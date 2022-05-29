@@ -1,7 +1,9 @@
 package com.example.fmeechcomopany;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,11 @@ public class registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
         setContentView(R.layout.activity_registration);
         login=findViewById(R.id.login);
         password=findViewById(R.id.true_password);
@@ -26,31 +33,54 @@ public class registration extends AppCompatActivity {
         finish();
     }
 
+    //Метод: Зарегестрироваться
+    public void zar(View view) {
+        try {
+            if(!(!login.getText().toString().equals("")&&!login.getText().toString().equals(" "))){
+                al.fmALERT("Не все данные введены","Поле: логин - пустое!",this);
+            }
+            else if (password.getText().toString().equals("")||password.getText().toString().equals(" ")){
+                al.fmALERT("Не все данные введены","Поле: пароль - пустое!",this);
+            }
+            else if (password2.getText().toString().equals("")||password2.getText().toString().equals(" ")){
+                al.fmALERT("Не все данные введены","Поле: пароль - пустое!",this);
+            }
+            else if (!password.getText().toString().equals(password2.getText().toString())){
+                al.fmALERT("Не верный пароль!","Пароли не совпадают.",this);
+            }
+            //проверка по логину на совпадение в бд
+            else if (InterfaseFmeech.LoginPasswordBOLL(login.getText().toString(),null)){
+                al.fmALERT("ОШИБКА РЕГИСТРАЦИИ","Такой логин уже сеществует.",this);
+            }
+            else
+            {
+                InterfaseFmeech.insertBD(login.getText().toString(),password.getText().toString(),null,null);
+                String LoginUSER = login.getText().toString();
+                Intent abc = new Intent(this, RedactionProfil.class);
+                abc.putExtra("login", LoginUSER);
+                startActivity(abc);
+            }
+        }
+        catch (Exception e){
+            al.fmALERT("КРАШ",e.toString(),this);
+        }
+    }
 
+
+
+    //Открыть бд
     @Override
     protected void onResume() {
         super.onResume();
         InterfaseFmeech.openBD();
     }
-
-    public void RegУdachno() {
-        InterfaseFmeech.insertBD(login.getText().toString(),password.getText().toString(),null,null);
-    }
-    public void zar(View view) {
-        Intent abc = new Intent(this, RedactionProfil.class);
-        startActivity(abc);
-        RegУdachno();
-    }
+    //Закрыть бд
     @Override
     protected void onDestroy() {
         super.onDestroy();
         InterfaseFmeech.closeBD();
     }
 }
-
-
-
-
 
 
 

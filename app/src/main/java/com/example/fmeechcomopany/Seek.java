@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 
+import android.view.View.OnClickListener;
 import com.example.fmeechcomopany.BDjavaFMEECH.constantFMEECH;
 import com.example.fmeechcomopany.BDjavaFMEECH.interfaseFMEECH;
 
@@ -21,14 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Seek extends AppCompatActivity {
+public class Seek extends AppCompatActivity{
     private interfaseFMEECH InterfaseFmeech;
     List<String> list =new ArrayList<>();
     String id,login,pass,name,about;
+    String name2;
 
     EditText search_text;
     String search;
     LinearLayout Lost;
+    List<String> IDButtonList=new ArrayList<>();
+    List<String> IDloginBtnList=new ArrayList<>();
+    List<String> Lacklist;
+    List<List> Golist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +64,35 @@ public class Seek extends AppCompatActivity {
         search_text=findViewById(R.id.search_text);
     }
 
+
+
+
+    public void onClickL(View v){
+        Log.d("АТЛАДКА1: ","Работаем");
+        int aol=0;
+                try {
+                    Log.d("АТЛАДКА2 : ",String.valueOf(aol));
+                    if (Integer.parseInt(IDButtonList.get(aol)) == v.getId()) {
+                        Lacklist = Golist.get(aol);
+                        name2 = (String) Lacklist.get(1);
+                        Log.d("СливДанных : ","aol "+aol+",      getId "+v.getId()+",      IDButtonList.get() "+Integer.parseInt(IDButtonList.get(aol)));
+
+                        //проверка по логину на совпадение в бд
+                        Intent abc = new Intent(this, your_profil.class);
+                        abc.putExtra("login", login);
+                        abc.putExtra("name2", name2);
+                        Log.d("СливДанных : ","Твой логин:      "+login+", и чужой имя:       "+name2);
+                        startActivity(abc);
+                    }
+                    aol++;
+                }
+                catch (Exception e){
+                    Log.d("АТЛАДКА3 НЕ ФАТАЛЬНАЯ: ",e.toString());
+                }
+
+
+    }
+
     public void back4(View view) {
         finish();
     }
@@ -73,8 +108,7 @@ public class Seek extends AppCompatActivity {
 
 
         search=search_text.getText().toString();
-        List<String> Lacklist;
-        List<List> Golist;
+
         Golist = InterfaseFmeech.ListNameBDall(search, constantFMEECH.KEY_NAME);
         int a=0;
         try {
@@ -139,6 +173,21 @@ public class Seek extends AppCompatActivity {
 
                         Btn1.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));//width,height
                         Btn1.setText("Перейти в профиль");
+                        String idBtnAdd=String.valueOf(Btn1.getId());
+                        IDButtonList.add(idBtnAdd);
+                        Btn1.setOnClickListener
+                                (
+                                        new View.OnClickListener()
+                                        {
+                                            public void onClick(View v) {
+                                                // Обработка нажатия
+                                                Log.d("СливДанных : "," Кнопка:  "+   (String) Lacklist.get(2)+" логин   "+idBtnAdd+" айди");
+                                                onClickL(Btn1);
+                                            }
+                                        }
+                                );
+                        Log.d("ОТЛАДКА ","    Вродебы кнопка добавлена успешна... eё айди " + idBtnAdd);
+
 
 
 

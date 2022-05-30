@@ -2,6 +2,7 @@ package com.example.fmeechcomopany;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class MyProfil extends AppCompatActivity {
         catch (NullPointerException e){}
         setContentView(R.layout.activity_my_profil);
         try {
+
 
 
             /*От сюда*/

@@ -41,6 +41,26 @@ public class interfaseFMEECH {
         }
     }
 
+    //Добавить в БД в таблицу СООБЩЕНИЯ новую запись
+    public void insertBDmes(String KEY_ID1, String KEY_ID2,String KEY_MESSEGE,String KEY_DATA,String KEY_NAME){
+        try {
+            ContentValues values = new ContentValues();
+            values.put(constantFMEECH.KEY_ID1, KEY_ID1);
+            values.put(constantFMEECH.KEY_ID2, KEY_ID2);//значения.помещаются(КЛЮЧ_ЛОГИН, логин);
+            values.put(constantFMEECH.KEY_NAME, KEY_NAME);
+            values.put(constantFMEECH.KEY_MESSEGE, KEY_MESSEGE);
+            values.put(constantFMEECH.KEY_DATA, KEY_DATA);
+
+            db.insert(constantFMEECH.TABLE_NAME3, null, values);//бд.вставлять(ТАБЛИЦА_ЮЗЕР,просто оставим нул,новый обьект для бд)
+
+
+
+            Log.d("ОТЛАДКА","В БД успешно была добавленна новая запись.");
+        } catch (Exception e) {
+            Log.d("ОТЛАДКА",e.toString());
+        }
+    }
+
     //Вход под своей учёт записью (проверка на совпадение логин/пароль в таблице юзер)
     public boolean LoginPasswordBOLL(String login,String password){
         try {
@@ -84,6 +104,53 @@ public class interfaseFMEECH {
     }
 
     //бесполезный лист
+    public List<String> ListBDmes(String id1,String id2,String numbet){
+        try{
+            List<String> listBD = new ArrayList<>();
+            Cursor cursor = db.query(
+                    constantFMEECH.TABLE_NAME3,  // Таблица для запроса
+                    null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                    null,               // Столбцы для предложения WHERE
+                    null,            // Значения для предложения WHERE
+                    null,               // не группировать строки
+                    null,                // не фильтровать по группам строк
+                    null                // Порядок сортировки
+            );
+            while (cursor.moveToNext()){
+                if(numbet.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID)))) {
+                    if(id1.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID1)))&&id2.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID2)))
+                            ||
+                            id1.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID2)))&&id2.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID1)))
+                    )
+                    {
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID)));   //0
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID1))); //1
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID2)));//2
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_NAME)));//3
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_MESSEGE))); //4
+                        listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_DATA)));//5
+                    }
+                }
+            /*
+            Шаблон вытаскивания данных из листа
+            String KEY_ID =(String) listBD.get(0);
+            String KEY_ID1 =(String) listBD.get(1);
+            String KEY_ID2 =(String) listBD.get(2);
+            String KEY_MESSEGE =(String) listBD.get(3);
+            String KEY_DATA =(String) listBD.get(4);
+            */
+
+            }
+            cursor.close();
+            return listBD;
+
+
+        }catch (Exception e){
+            Log.d("ОТЛАДКА ",e.toString());}
+        return new ArrayList<>();
+    }
+
+    //бесполезный лист
     public List<String> ListNameBD(String login){
         try{
             List<String> listBD = new ArrayList<>();
@@ -118,6 +185,52 @@ public class interfaseFMEECH {
         }
         cursor.close();
         return listBD;
+
+
+        }catch (Exception e){
+            Log.d("ОТЛАДКА ",e.toString());}
+        return new ArrayList<>();
+    }
+
+    //бесполезный лист
+    public List<String> ListNameBDLogin(String name){
+        try{
+            List<String> listBD = new ArrayList<>();
+            Cursor cursor = db.query(
+                    constantFMEECH.TABLE_NAME1,  // Таблица для запроса
+                    null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                    null,               // Столбцы для предложения WHERE
+                    null,            // Значения для предложения WHERE
+                    null,               // не группировать строки
+                    null,                // не фильтровать по группам строк
+                    null                // Порядок сортировки
+            );
+            while (cursor.moveToNext()){
+                Log.d("ОТЛАДКА (БД): ",(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID)))+     " " +     (cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_NAME)))+         " " +     (cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN)))+           " " +   (cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_PASS)))+         " " +     (cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ABOUT))));
+
+                if(name.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_NAME)))){
+                    listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID)));   //0
+                    listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_NAME))); //1
+                    listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN)));//2
+                    listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_PASS))); //3
+                    listBD.add(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ABOUT)));//4
+                    Log.d("ОТЛАДКА ","НАШЁЛ ЮЗЕРА!!!!!!!");
+                    cursor.close();
+                    return listBD;
+                }
+            /*
+            Шаблон вытаскивания данных из листа
+            String id =(String) listBD.get(0);
+            String name =(String) listBD.get(1);
+            String login =(String) listBD.get(2);
+            String pass =(String) listBD.get(3);
+            String about =(String) listBD.get(4);
+            */
+
+            }
+            cursor.close();
+            Log.d("ОТЛАДКА ","НЕ НАШЁЛ ЮЗЕРА");
+            return new ArrayList<>();
 
 
         }catch (Exception e){

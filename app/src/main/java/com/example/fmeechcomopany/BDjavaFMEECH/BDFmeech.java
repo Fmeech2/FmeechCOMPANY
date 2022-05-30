@@ -16,12 +16,16 @@ public class BDFmeech extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(constantFMEECH.TABLE_STRUCTURE);
+        db.execSQL(constantFMEECH.TABLE_STRUCTURE2);
+        db.execSQL(constantFMEECH.TABLE_STRUCTURE3);
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(constantFMEECH.DROP_TABLE);
+        db.execSQL(constantFMEECH.DROP_TABLE1);
+        db.execSQL(constantFMEECH.DROP_TABLE2);
+        db.execSQL(constantFMEECH.DROP_TABLE3);
         onCreate(db);
     }
 }

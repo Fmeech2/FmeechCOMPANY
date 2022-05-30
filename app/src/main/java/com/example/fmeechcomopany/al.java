@@ -9,8 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 //КЛАСС щаблона алерт диалога
 public class al{
@@ -28,4 +39,16 @@ public class al{
         });
         builder.show();
     }
+
+    //Шаблон Воремя сейчас метод
+    public static String fmDATA(){
+        // Текущее время
+        Date currentDate = new Date();
+        // Форматирование времени как "часы:минуты:секунды"
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String timeText = timeFormat.format(currentDate);
+        Log.d("ВРЕМЯ ",timeText);
+        return timeText;
+    }
+
 }

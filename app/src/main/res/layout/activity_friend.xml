@@ -43,7 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/LISTARKio">
 
 
 
@@ -72,15 +73,6 @@
                             android:textSize="9pt"
 
                             />
-
-                        <Button
-                            android:layout_width="219dp"
-                            android:layout_height="38dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/button"
-                            android:text="Перейти в профиль"
-                            android:textColor="@color/white"
-                            android:onClick="Perhod"/>
                     </LinearLayout>
                 </LinearLayout>
 

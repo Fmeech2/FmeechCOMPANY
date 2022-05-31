@@ -197,4 +197,16 @@ public void startAct() {
 InterfaseFmeech.insertBDmes(id,id2,OtpraS,al.fmDATA(),name);
         startAct();
     }
+    //Открыть бд
+    @Override
+    protected void onResume() {
+        super.onResume();
+        InterfaseFmeech.openBD();
+    }
+    //Закрыть бд
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        InterfaseFmeech.closeBD();
+    }
 }

@@ -80,8 +80,14 @@ public class your_profil extends AppCompatActivity {
     }
 
     public void dr(View view) {
-        Intent abc = new Intent(this, Friend.class);
-        startActivity(abc);
+
+
+
+// Удалить из др/проверит на др
+//Добавить в др
+        if(!InterfaseFmeech.NameFRENDbool(login,login2)){
+            InterfaseFmeech.insertFREND(login,login2);
+        }
     }
     //Открыть бд
     @Override

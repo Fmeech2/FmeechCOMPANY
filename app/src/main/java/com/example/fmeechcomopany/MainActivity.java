@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             else if (InterfaseFmeech.LoginPasswordBOLL(login.getText().toString(),password.getText().toString())){
                 //проверка по логину на совпадение в бд
                 String loginUSER=login.getText().toString();
-                Intent abc = new Intent(this, RedactionProfil.class);
+                Intent abc = new Intent(this, MyProfil.class);
                 abc.putExtra("login", loginUSER);
                 startActivity(abc);
             }

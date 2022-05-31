@@ -62,13 +62,17 @@ public class MyProfil extends AppCompatActivity {
     }
 
     public void dru(View view) {
+        //проверка по логину на совпадение в бд
         Intent abc = new Intent(this, Friend.class);
+        abc.putExtra("login", login);
         startActivity(abc);
     }
 
     public void red(View view) {
-        Intent b = new Intent(this, RedactionProfil.class);
-        startActivity(b);
+        //проверка по логину на совпадение в бд
+        Intent abc = new Intent(this, RedactionProfil.class);
+        abc.putExtra("login", login);
+        startActivity(abc);
     }
 
     public void sea(View view) {

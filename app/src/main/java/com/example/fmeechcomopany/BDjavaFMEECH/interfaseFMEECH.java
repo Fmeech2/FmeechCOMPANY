@@ -41,6 +41,23 @@ public class interfaseFMEECH {
         }
     }
 
+    //Добавить в БД в таблицу ДРУЗЬЯ новую запись
+    public void insertFREND(String login, String login2){
+        try {
+            ContentValues values = new ContentValues();
+            values.put(constantFMEECH.KEY_LOGIN1, login);
+            values.put(constantFMEECH.KEY_LOGIN2, login2);//значения.помещаются(КЛЮЧ_ЛОГИН, логин);
+
+            db.insert(constantFMEECH.TABLE_NAME2, null, values);//бд.вставлять(ТАБЛИЦА_ЮЗЕР,просто оставим нул,новый обьект для бд)
+
+
+
+            Log.d("ОТЛАДКА","В БД успешно была добавленна новая запись.");
+        } catch (Exception e) {
+            Log.d("ОТЛАДКА",e.toString());
+        }
+    }
+
     //Добавить в БД в таблицу СООБЩЕНИЯ новую запись
     public void insertBDmes(String KEY_ID1, String KEY_ID2,String KEY_MESSEGE,String KEY_DATA,String KEY_NAME){
         try {
@@ -148,6 +165,144 @@ public class interfaseFMEECH {
         }catch (Exception e){
             Log.d("ОТЛАДКА ",e.toString());}
         return new ArrayList<>();
+    }
+
+    //бесполезный лист
+    public String NameFRENDid(String login,String numbet){
+        String name="ЧЁ, НЕТ ИМЕНИ??";
+        Log.d("ОТЛАДКА_D ", login+ "    "+numbet+"   ");
+        try{
+            List<String> listBD = new ArrayList<>();
+            Cursor cursor = db.query(
+                    constantFMEECH.TABLE_NAME2,  // Таблица для запроса
+                    null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                    null,               // Столбцы для предложения WHERE
+                    null,            // Значения для предложения WHERE
+                    null,               // не группировать строки
+                    null,                // не фильтровать по группам строк
+                    null                // Порядок сортировки
+            );
+            while (cursor.moveToNext()){
+                Log.d("ОТЛАДКА_A ",  "айди сравнение: "+cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID))+"| номер сейчас "+numbet+"| Логин1 сейчас "+cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN1))+"| Логин2 сейчас "+cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN2)));
+                Log.d("ОТЛАДКА_A ",  "Логин1 в метод передали "+login);
+                if(numbet.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID)))) {
+                    if(login.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN1))))
+                    {
+                        Cursor cursor2 = db.query(
+                                constantFMEECH.TABLE_NAME1,  // Таблица для запроса
+                                null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                                null,               // Столбцы для предложения WHERE
+                                null,            // Значения для предложения WHERE
+                                null,               // не группировать строки
+                                null,                // не фильтровать по группам строк
+                                null                // Порядок сортировки
+                        );
+                        while (cursor2.moveToNext()){
+                            if((cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN2)))//логин2 друзья
+                                    .equals(cursor2.getString(cursor2.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN))))//логин юзеры
+                            {
+                                name= cursor2.getString(cursor2.getColumnIndexOrThrow(constantFMEECH.KEY_NAME));//3
+                            }
+                        }
+                    }
+                    if(login.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN2))))
+                    {
+                        Cursor cursor2 = db.query(
+                                constantFMEECH.TABLE_NAME1,  // Таблица для запроса
+                                null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                                null,               // Столбцы для предложения WHERE
+                                null,            // Значения для предложения WHERE
+                                null,               // не группировать строки
+                                null,                // не фильтровать по группам строк
+                                null                // Порядок сортировки
+                        );
+                        while (cursor2.moveToNext()){
+                            if((cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN1)))//логин1 друзья
+                                    .equals(cursor2.getString(cursor2.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN))))//логин юзеры
+                            {
+                                name= cursor2.getString(cursor2.getColumnIndexOrThrow(constantFMEECH.KEY_NAME));//3
+                            }
+                        }
+                    }
+                }
+
+            }
+            cursor.close();
+        }catch (Exception e){
+            Log.d("ОТЛАДКА ",e.toString());}
+        Log.d("ОТЛАДКА_A", "    КОНЕЦ   ");
+        return name;
+    }
+
+    //бесполезный лист
+    public Boolean NameFRENDbool(String login1,String login2){
+        Boolean boleng=false;
+        try{
+            List<String> listBD = new ArrayList<>();
+
+            Cursor cursor = db.query(
+                    constantFMEECH.TABLE_NAME2,  // Таблица для запроса
+                    null,               // Массив возвращаемых столбцов (передайте null, чтобы получить все)
+                    null,               // Столбцы для предложения WHERE
+                    null,            // Значения для предложения WHERE
+                    null,               // не группировать строки
+                    null,                // не фильтровать по группам строк
+                    null                // Порядок сортировки
+            );
+            while (cursor.moveToNext()){
+                if(login1.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN1)))&&
+                        login2.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN2)))) {
+                    boleng= true;//3
+                    try {
+                        String id = cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID));
+                        ContentValues values = new ContentValues();
+                        values.put(constantFMEECH.KEY_LOGIN1, "001010010");
+                        values.put(constantFMEECH.KEY_LOGIN2,"001010010");//значения.помещаются(КЛЮЧ_ЛОГИН, логин);
+
+
+                        //бд.вставлять(ТАБЛИЦА_ДРУЗЬЯ,Новый обьект для бд,По какому столбцу будет вестись поиск + "= ?",Массив элементов для условия поиска)
+                        db.update
+                                (
+                                        constantFMEECH.TABLE_NAME2,
+                                        values,
+                                        constantFMEECH.KEY_ID+"= ?",
+                                        new String[]{id}
+                                );
+
+                        Log.d("ОТЛАДКА","В БД успешно были обновлены записи с id: "+id);
+                    } catch (Exception e) {
+                        Log.d("ОТЛАДКА ",e.toString());
+                    }
+                }
+                if(login2.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN1)))&&
+                        login1.equals(cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_LOGIN2)))) {
+                    boleng= true;//3
+                    try {
+                        String id = cursor.getString(cursor.getColumnIndexOrThrow(constantFMEECH.KEY_ID));
+                        ContentValues values = new ContentValues();
+                        values.put(constantFMEECH.KEY_LOGIN1, "001010010");
+                        values.put(constantFMEECH.KEY_LOGIN2,"001010010");//значения.помещаются(КЛЮЧ_ЛОГИН, логин);
+
+
+                        //бд.вставлять(ТАБЛИЦА_ДРУЗЬЯ,Новый обьект для бд,По какому столбцу будет вестись поиск + "= ?",Массив элементов для условия поиска)
+                        db.update
+                                (
+                                        constantFMEECH.TABLE_NAME2,
+                                        values,
+                                        constantFMEECH.KEY_ID+"= ?",
+                                        new String[]{id}
+                                );
+
+                        Log.d("ОТЛАДКА","В БД успешно были обновлены записи с id: "+id);
+                    } catch (Exception e) {
+                        Log.d("ОТЛАДКА ",e.toString());
+                    }
+                }
+            }
+            cursor.close();
+        }catch (Exception e){
+            Log.d("ОТЛАДКА ",e.toString());}
+        return boleng;
     }
 
     //бесполезный лист

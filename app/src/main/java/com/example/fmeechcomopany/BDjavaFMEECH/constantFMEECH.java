@@ -13,13 +13,15 @@ public class constantFMEECH {
 
     public static final String KEY_ID1 = "id1";
     public static final String KEY_ID2 = "id2";
+    public static final String KEY_LOGIN1 = "login1";
+    public static final String KEY_LOGIN2 = "login2";
     public static final String KEY_MESSEGE = "messege";
     public static final String KEY_DATA = "data";
 
 
 
     public static final String DATABASE_NAME = "FmeechCompany.db";
-    public static final int DATABASE_VERSION = 12;
+    public static final int DATABASE_VERSION = 14;
 
     public static final String TABLE_STRUCTURE =
             "CREATE TABLE " + TABLE_NAME1+
@@ -34,8 +36,9 @@ public class constantFMEECH {
     public static final String TABLE_STRUCTURE2 =
             "CREATE TABLE " + TABLE_NAME2+
                     "("
-                    + KEY_ID1 + " TEXT,"
-                    + KEY_ID2 + " TEXT"
+                    + KEY_ID + " INTEGER PRIMARY KEY,"
+                    + KEY_LOGIN1 + " TEXT,"
+                    + KEY_LOGIN2 + " TEXT"
                     +")";
 
     public static final String TABLE_STRUCTURE3 =
